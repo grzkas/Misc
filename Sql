@@ -1,0 +1,225 @@
+SELECT imie, nazwisko, pensja FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska AND pensja>3000.00;
+
+inis
+
+nazvisko
+
+aleki
+
+pensja
+
+7. Utwórz zapytanie wybierające imiona, nazwiska pracowników, którzy mają niskie zarobki, do 3000 zł.
+
+SELECT imie, nazwisko, pensja FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska AND pensja<=3000.00;
+
+inie
+
+nazvisko
+
+pensja
+
+Nowak
+
+Marczak
+
+Borel
+
+8. Wyświetl wszystkie miasta, w których mieszkają pracownicy firmy i posortuj je w kolejności alfabetycznej.
+
+SELECT DISTINCT miasto FROM pracownicy ORDER BY miasto;
+
+Gdańsk
+
+9. Posortuj pracowników według daty urodzenia od najstarszego do najmłodszego.
+
+SELECT imie, nazwisko, data_ur FROM pracownicy ORDER BY data_ur ASC;
+
+lub
+
+SELECT imie, nazwisko, data_ur FROM pracownicy ORDER BY data_ur;
+
+inie
+
+I nazwisko I
+
+da
+
+Kajetan
+
+Grota
+
+Mari
+
+Marczak
+
+Maria
+
+Borek Kowalski
+
+Jan Kaja
+
+Borecka
+
+10. Posortuj pracowników według daty urodzenia od najmłodszego do najstarszego.
+
+SELECT imie, nazwisko, data_ur FROM pracownicy ORDER BY data_ur DESC;
+
+nazwisko
+
+inie Anna 198
+
+Kaja
+
+Nowak
+
+Jan Maria
+
+Borecka Kowalski
+
+data ur
+
+Marian
+
+Borek Marczak
+
+Kajetan
+
+Grota
+
+11. Wyświetl zawartość tabeli pracownicy posortowane według kolumny nazwisko (rosnąco) i według kolumny data_ur (malejąco).
+
+SELECT * FROM pracownicy ORDER BY nazwisko ASC, data_ur DESC;
+
+12. Wyświetl pracowników urodzonych przed 1980-01-01.
+
+SELECT imie, nazwisko, data_ur FROM pracownicy WHERE data_ur<'1980-01-01';
+
+inde
+
+Jan
+
+Inazuiske
+
+data ur
+
+Marian
+
+Marseak
+
+13. Wyświetl pracowników urodzonych w latach 60-tych.
+
+SELECT imie, nazwisko, data_ur FROM pracownicy WHERE data_ur>'1960-01-01' AND data_ur<'1969-12-31';
+
+lub
+
+SELECT imie, nazwisko, data_ur FROM pracownicy WHERE data_ur BETWEEN '1960-01-01' AND '1969-12-31';
+
+inie
+
+nazwisko
+
+Kajetan
+
+Borek
+
+Мазова Grota
+
+14. Pobierz z tabel pracownicy i stanowiska dane o imionach, nazwiskach i zarobkach tak, aby kolumna pensja miała nazwę wynagrodzenie.
+
+SELECT imie, nazwisko, pensja AS wynagrodzenie FROM pracownicy, stanowiska
+
+WHERE stanowisko stanowiska.id_stanowiska;
+
+inde
+
+Borecka
+
+magrodzenie
+
+15. Policz liczbę pracowników w firmie (wynik: 6).
+
+SELECT COUNT(*) FROM pracownicy;
+
+16. Zmodyfikuj poprzednie zapytanie. Zmień nazwę kolumny zawierającej efekt działania funkcji.
+
+SELECT COUNT(*) AS "Liczba pracowników" FROM pracownicy;
+
+1 Liczba pracowników
+
+6
+
+17. Policz liczbę pracowników z poszczególnych miast.
+
+SELECT miasto, COUNT(*) FROM pracownicy GROUP BY miasto;
+
+miasto
+
+COUNT(*)!
+
+Gdańsk
+
+Gdynia
+
+Sopot
+
+18 Policz liczbę pracowników na każdym stanowisku.
+
+SELECT nazwa, COUNT(*) FROM pracownicy, stanowiska
+
+WHERE stanowisko stanowiska.id_stanowiska
+
+GROUP BY stanowisko;
+
+käerounik
+
+asystent
+
+COUNT C
+
+sekretarka
+
+
+
+19. Wykonaj zapytanie obliczające sumę zarobków wszystkich pracowników (wynik: 18 000,00).
+
+SELECT SUM(pensja) FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id stanowiska;
+
+20. Zmodyfikuj poprzednie zapytanie. Zmień nazwę kolumny zawierającej efekt działania funkcji.
+
+SELECT SUM(pensja) AS "Suma zarobków" FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska;
+
+21. Oblicz sumę zarobków pracowników z poszczególnych miast.
+
+SELECT miasto, SUM(pensja) FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska GROUP BY miasto;
+
+22. Oblicz sumę zarobków pracowników z każdego stanowiska w firmie.
+
+SELECT nazwa, SUM(pensja) FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska GROUP BY stanowisko;
+
+23. Wykonaj zapytanie obliczające średnie wynagrodzenie pracowników (wynik: 3000,00).
+
+SELECT AVG(pensja) FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska;
+
+24. Zmodyfikuj poprzednie zapytanie. Zmień nazwę kolumny zawierającej efekt działania funkcji.
+
+SELECT AVG(pensja) AS „Średnie wynagrodzenie" FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska;
+
+25. Wykonaj zapytanie, które poda maksymalną pensję (wynik: 4000,00).
+
+SELECT MAX(pensja) FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska;
+
+26. Zmodyfikuj poprzednie zapytanie. Zmień nazwę kolumny zawierającej efekt działania funkcji.
+
+SELECT MAX(pensja) AS,,Maksymalne wynagrodzenie" FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska;
+
+27. Wykonaj zapytanie, które poda minimalną pensję (wynik: 2500,00).
+
+SELECT MIN(pensja) FROM pracownicy, stanowiska WHERE stanowisko stanowiska.id_stanowiska;
+
+28. Policz ile kobiet pracuje w tej firmie (wynik: 3).
+
+SELECT COUNT(*) FROM pracownicy WHERE imie LIKE '%a';
+
+29. Policz ilu mężczyzn pracuje w tej firmie (wynik: 3+1).
+
+SELECT COUNT(*) FROM pracownicy WHERE imie NOT LIKE '%a';
