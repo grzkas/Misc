@@ -1,0 +1,72 @@
+public class AWP extends Weapon implements IFireable, IZoomable {
+    private boolean isZoomed = false;
+
+    public AWP() {
+        super("AWP", 4750, 10);
+    }
+
+    @Override
+    public void displayStats() {
+        System.out.println("Weapon: " + name + " | Price: " + price + "$ | Ammo: " + currentAmmo + "/" + clipSize);
+    }
+
+    @Override
+    public void shoot() {
+        if (currentAmmo > 0) {
+            currentAmmo--;
+            System.out.println(name + " fired. Ammo left: " + currentAmmo);
+        } else {
+            System.out.println(name + " is empty! Need to reload.");
+        }
+    }
+
+    @Override
+    public void reload() {
+        System.out.println("Reloading " + name + "...");
+        refillAmmo();
+    }
+
+    @Override
+    public void toggleScope() {
+        isZoomed = !isZoomed;
+        System.out.println(name + " scope zoomed: " + isZoomed);
+    }
+}
+
+public class M4A1S extends Weapon implements IFireable, IModeSwitchable {
+    private boolean isSilencerOn = true;
+
+    public M4A1S() {
+        super("M4A1-S", 2900, 20);
+    }
+
+    @Override
+    public void displayStats() {
+        System.out.println("Weapon: " + name + " | Price: " + price + "$ | Ammo: " + currentAmmo + "/" + clipSize);
+    }
+
+    @Override
+    public void shoot() {
+        if (currentAmmo > 0) {
+            currentAmmo--;
+            System.out.println(name + " fired. Ammo left: " + currentAmmo);
+        } else {
+            System.out.println(name + " is empty! Need to reload.");
+        }
+    }
+
+    @Override
+    public void reload() {
+        System.out.println("Reloading " + name + "...");
+        refillAmmo();
+    }
+
+    @Override
+    public void switchMode() {
+        isSilencerOn = !isSilencerOn;
+        String status = isSilencerOn ? "Silencer Attached" : "Silencer Removed";
+        System.out.println(name + " mode changed: " + status);
+    }
+}
+
+
