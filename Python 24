@@ -1,0 +1,21 @@
+def czy_pierwsza(liczba):
+    if liczba < 2:
+        return False
+    for i in range(2, int(liczba**0.5) + 1):
+        if liczba % i == 0:
+            return False
+    return True
+
+print("--- SYSTEM GENEROWANIA CYBER-KLUCZY ---")
+n = int(input("Podaj górny zakres wyszukiwania (N): "))
+
+print(f"\nSzukam par liczb bliźniaczych do {n}...")
+
+licznik_par = 0
+for p in range(2, n - 1):
+    if czy_pierwsza(p) and czy_pierwsza(p + 2):
+        print(f"Znaleziono cyber-klucz: ({p}, {p + 2})")
+        licznik_par += 1
+
+print(f"\nOperacja zakończona. Łącznie znaleziono par: {licznik_par}")
+
