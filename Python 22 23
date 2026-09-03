@@ -1,0 +1,44 @@
+zad23
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+while True:
+    dol = int(input("Podaj dolną granicę: "))
+    gor = int(input("Podaj górną granicę: "))
+    if dol < gor:
+        break
+    print("Dolna granica musi być mniejsza od górnej!")
+
+suma = 0
+for j_raw in range(dol, gor + 1):
+    if is_prime(j_raw):
+        print(f"Liczba {j_raw} to liczba pierwsza")
+        suma = suma + j_raw
+
+print(f"Suma liczb pierwszych = {suma}")
+
+
+
+
+zad22
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+nr_z_dziennika = int(input("Podaj numer z dziennika: "))
+liczba = 1000 + nr_z_dziennika * 100 + 15
+
+candidate = liczba
+while not is_prime(candidate):
+    candidate += 1
+
+print(f"Najbliższa liczba pierwsza to: {candidate}")
